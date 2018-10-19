@@ -19,15 +19,16 @@ $(document).ready(function() {
     promise.then(function(response) {
       let body = JSON.parse(response);
 
-      if(body.meta.count === 0) {
-        $("#resultDoctorName").text(`There are no doctor's named "${name}" found in our system.`);
+      if(name === "") {
+        $("#doctorNameResult").text(`Please enter a name to be searched.`);
+      } else if(body.meta.count === 0) {
+        $("#doctorNameResult").text(`There are no doctor's named "${name}" found in our system.`);
       } else {
         for(var i=0; i < body.data.length; i++) {
           let doctorFullName = body.data[i].profile.first_name + " " + body.data[i].profile.last_name;
-          $("#resultDoctorName").append(`${doctorFullName}`);
+          $("#doctorNameResult").append(`<li> ${doctorFullName} <li>`);
         }
       }
-
 
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
