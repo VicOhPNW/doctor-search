@@ -19,11 +19,13 @@ $(document).ready(function() {
     promise.then(function(response) {
       let body = JSON.parse(response);
 
-      if(body.meta.count() === 0)
-
-      for(var i=0; i < body.data.length; i++) {
-        let name = body.data[i].first_name;
-        $("#resultDoctorName").text("doctorName");
+      if(body.meta.count === 0) {
+        $("#resultDoctorName").text(`There are no doctor's named "${name}" found in our system.`);
+      } else {
+        for(var i=0; i < body.data.length; i++) {
+          let doctorFullName = body.data[i].profile.first_name + " " + body.data[i].profile.last_name;
+          $("#resultDoctorName").append(`${doctorFullName}`);
+        }
       }
 
 
