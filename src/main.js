@@ -58,7 +58,6 @@ $(document).ready(function() {
     event.preventDefault();
 
     let symptom = $('#symptom').val();
-    console.log(symptom);
     $('#symptom').val("");
     let symptomSearch = new DoctorSearch();
     let promise = symptomSearch.getSymptom(symptom);
@@ -73,26 +72,26 @@ $(document).ready(function() {
       } else {
         for(var i=0; i < body.data.length; i++) {
           let doctorFullName = body.data[i].profile.first_name + " " + body.data[i].profile.last_name;
-          $(".doctorNameResult").append(`${doctorFullName}` + "<br>");
+          $(".symptomResult").append(`${doctorFullName}` + "<br>");
 //info not displaying in the manner that I want. Still need to play around with this. e.g. some info is "undefined"
             for(var j = 0; j < body.data[i].practices.length; j++) {
               if (body.data[i].practices[j].visit_address.street2 !== undefined){
-                $("#info").append("Address:" + body.data[i].practices[j].visit_address.street + " " + body.data[i].practices[j].visit_address.street2 + "<br>");
-                $("#info").append(body.data[i].practices[j].visit_address.city + ", " + body.data[i].practices[j].visit_address.state + " " + body.data[i].practices[j].visit_address.zip + "<br>");
+                $("#doctorInfo").append("Address:" + body.data[i].practices[j].visit_address.street + " " + body.data[i].practices[j].visit_address.street2 + "<br>");
+                $("#doctorInfo").append(body.data[i].practices[j].visit_address.city + ", " + body.data[i].practices[j].visit_address.state + " " + body.data[i].practices[j].visit_address.zip + "<br>");
               } else {
-                $("#info").append("Address:" + body.data[i].practices[j].visit_address.street + "<br>");
-                $("#info").append(body.data[i].practices[j].visit_address.city + ", " + body.data[i].practices[j].visit_address.state + " " + body.data[i].practices[j].visit_address.zip + "<br>");
+                $("#doctorInfo").append("Address:" + body.data[i].practices[j].visit_address.street + "<br>");
+                $("#doctorInfo").append(body.data[i].practices[j].visit_address.city + ", " + body.data[i].practices[j].visit_address.state + " " + body.data[i].practices[j].visit_address.zip + "<br>");
               }
               if (body.data[i].practices[0].website !== undefined){
-                $("#info").append("Website: " + body.data[i].practices[0].website + "<br><br>");
+                $("#doctorInfo").append("Website: " + body.data[i].practices[0].website + "<br><br>");
               }
 
               if(body.data[i].practices[1].accepts_new_patients){
-                $("#info").append("Is accepting new patients." + "<br>");
+                $("#doctorInfo").append("Is accepting new patients." + "<br>");
               } else {
-                $("#info").append("Is not accepting new patients." + "<br>");
+                $("#doctorInfo").append("Is not accepting new patients." + "<br>");
               }
-               $("#info").append("Phone Number: " + body.data[i].practices[j].phones[0].number + "<br>" + "<br>");
+               $("#doctorInfo").append("Phone Number: " + body.data[i].practices[j].phones[0].number + "<br>" + "<br>");
             }
           }
         }

@@ -16,14 +16,14 @@ This is an exercise to apply and test our understanding of JavaScript unit week 
 * Project demonstrates understanding of week's concepts. If prompted, you are able to discuss your code with an instructor using correct terminology.
 
 ## *Specifications*
-* A user should be able to enter a medical issue to receive a list of doctors in the Portland area that fit the search query.
-* A user should be able to to enter a name to receive a list of doctors in the Portland area that fit the search query.
+* A user should be able to enter a medical issue to receive a list of doctors in the Seattle area that fit the search query.
+* A user should be able to to enter a name to receive a list of doctors in the Seattle area that fit the search query.
 * If the query response includes any doctors, the following information should be included about each doctor: first name, last name, address, phone number, website and whether or not the doctor is accepting new patients (the API provides this data).
 * If the API call results in an error (any message not a 200 OK), the application should return a notification that states what the error is.
 * If the query response doesn't include any doctors (for instance, if no doctors meet the search criteria), the application should return a notification that states that no doctors meet the criteria. (This is not an error so it should be handled separately from any errors.)
 
 ## *Known Bugs & Issues*
-
+* Some doctors have the same address listed multiple times.
 
 ## *Setup/Installation Requirements*
 
@@ -31,11 +31,13 @@ This is an exercise to apply and test our understanding of JavaScript unit week 
 ```
     $ git clone https://github.com/VicOhPNW/doctor-search.git
 ```
+2. Them within the project folder, run the following commands:
 ```
-    run npm install
+    $ npm install
 ```
-
-
+```
+    $ npm run start
+```
 
 ## *Support and contact details*
 Contact: Victoria, ohvictori@gmail.com
