@@ -3,6 +3,6 @@
   margin-top: 25px;
 }
 
-#doctorNameResult {
-  font-weight: bold;
+.resultDoctorName {
+  margin-top: 25px;
 }
